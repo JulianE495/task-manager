@@ -1,0 +1,324 @@
+.chat__container {
+    background: linear-gradient(45deg, #07162c, #09202b, rgb(57, 33, 0), #133453);
+    background-size: 400% 400%;
+    /* Tamaño del fondo para animación */
+    animation: gradientAnimation 12s infinite;
+    /* Duración de la animación */
+
+    width: 100%;
+    height: 100vh;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 30%;
+    }
+
+    50% {
+        background-position: 100% 30%;
+    }
+
+    100% {
+        background-position: 0% 30%;
+    }
+}
+
+
+.sides__container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding: .8rem 1.5rem;
+    gap: 2rem;
+}
+
+.line {
+    color: white;
+    width: 100%;
+
+}
+
+.chat__title {
+    color: #FFF;
+
+    text-align: center;
+    font-family: Inter;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.057rem;
+    text-align: start;
+
+}
+
+.cont__title {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+
+}
+
+.name__text {
+    color: #FFF;
+
+    text-align: center;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.057rem;
+
+    text-align: start;
+}
+
+.left__container {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+}
+
+
+.right__container {
+    width: 65%;
+
+}
+
+.messages__container {
+    overflow-y: auto;
+    /* Agrega un desbordamiento vertical con scroll */
+    max-height: 80vh;
+    /* Establece el límite de altura según tus necesidades */
+    scrollbar-color: #ffffff #DCDCDC;
+    /* color de la barra y del fondo (puedes ajustarlos) */
+    scrollbar-width: thin;
+    /* ancho de la barra (puedes usar 'auto' para el ancho predeterminado del navegador) */
+}
+
+/* Estilos adicionales para navegadores que no admiten 'scrollbar-color' y 'scrollbar-width' */
+.messages__container::-webkit-scrollbar {
+    width: 8px;
+    /* ancho de la barra (puedes ajustarlos) */
+}
+
+.messages__container::-webkit-scrollbar-thumb {
+    background-color: #585858;
+    /* color de la barra (puedes ajustarlos) */
+}
+
+.messages__container::-webkit-scrollbar-track {
+    background-color: #DCDCDC;
+    /* color del fondo (puedes ajustarlos) */
+}
+
+.name__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 0rem .3rem 0rem;
+
+}
+
+.profile-image {
+    width: 40px;
+    /* Ajusta el tamaño según tus necesidades */
+    height: 40px;
+    /* Ajusta el tamaño según tus necesidades */
+    border-radius: 50%;
+    margin-right: 10px;
+    /* Espacio entre la imagen y el texto */
+}
+
+
+/* ... Tu código anterior ... */
+.search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.search-icon {
+    color: gray;
+    font-size: 1.2rem;
+}
+
+.send-icon {
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+
+    transform: translateY(-50%);
+}
+
+.search-input {
+    color: #fff;
+    text-align: left;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 1.875rem */
+    letter-spacing: -0.02375rem;
+    border-radius: 0.6rem;
+    border: none;
+    width: 100%;
+    background-color: transparent;
+
+}
+
+
+.form__element__chat {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: .8rem;
+    position: absolute;
+    bottom: 0%;
+}
+
+.add-icon {
+    margin: 0 5px;
+    /* Puedes ajustar este margen según sea necesario */
+    color: #ffffff;
+    /* Color del icono */
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el icono, si es necesario */
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+
+
+.send-icon {
+    margin: 1.5rem 5px 0 5px;
+    font-size: 1.5rem;
+    /* Tamaño del icono */
+    color: #ffffff;
+    /* Color del icono */
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el icono, si es necesario */
+
+}
+
+.ref__input {
+    all: unset;
+    /* Elimina todos los estilos por defecto */
+    border-radius: 0.75rem;
+    background: #DCDCDC;
+    font-family: Inter;
+    color: #585858;
+    padding: 8px;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte al tamaño total */
+    width: 48vw;
+    /* Ajusta según tus necesidades */
+
+    overflow: hidden;
+    /* Permitir desbordamiento con barras de desplazamiento */
+}
+
+.input__chat {
+    border: none;
+    outline: none;
+    cursor: text;
+    background: none;
+
+    color: #393939;
+
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 1.875rem */
+    letter-spacing: -0.02375rem;
+    padding-left: 0.1rem;
+
+    overflow: hidden;
+    /* Permitir desbordamiento con barras de desplazamiento */
+
+}
+
+
+
+/*contact cards*/
+
+.chats__container {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    width: 100%;
+    height: 100%;
+    font-family: Inter;
+    overflow-y: scroll;
+    padding-right: .3rem;
+}
+
+.contact__chat {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 0.625rem;
+    background: rgba(248, 248, 248, 0.95);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.52);
+    width: 100%;
+    height: 10vh;
+    flex-shrink: 0;
+    padding: 1.5rem;
+    cursor: pointer;
+}
+
+.contact__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.circle__notification {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #3546FC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.chats__container::-webkit-scrollbar {
+    width: .3vw;
+}
+
+.chats__container::-webkit-scrollbar-thumb {
+    background-color: rgba(248, 248, 248, 0.95);
+    /* Color del pulgar de la barra de desplazamiento */
+    border-radius: 6px;
+}
+
+.contact__chat {
+    color: #282828;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 150%;
+    /* 1.875rem */
+    letter-spacing: -0.02375rem;
+}

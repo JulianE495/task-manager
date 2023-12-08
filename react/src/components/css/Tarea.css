@@ -1,0 +1,58 @@
+* {
+    font-family: Jockey One;
+    color: #000;
+}
+
+.task-container {
+    width: 340px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F4F4F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    margin-top: 15px;
+}
+
+.task-container>img {
+    width: 33px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    margin-right: 12px;
+
+}
+
+.info-container>h3 {
+    overflow: hidden;
+    color: #454545;
+    text-overflow: ellipsis;
+    font-family: Jockey One;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.date-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.date-container>span {
+    color: #AAA;
+    font-family: Jockey One;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

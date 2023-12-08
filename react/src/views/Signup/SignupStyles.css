@@ -1,0 +1,187 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #07162C;
+    text-align: center;
+    /* Centra horizontalmente el contenido */
+    font-family: Inter;
+
+}
+
+
+.form-element {
+    margin: 10px;
+    margin-bottom: 1.2rem;
+    justify-content: center;
+
+}
+
+.user-button {
+    background-color: white;
+    border: none;
+    color: #585858;
+    border-radius: 22px;
+    padding: 8px 67px;
+    cursor: pointer;
+    text-align: left;
+    padding-left: 2em;
+    width: 273px;
+    height: 34px;
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 21px */
+    letter-spacing: -0.266px;
+    position: relative;
+    /* Necesario para los pseudoelementos */
+    outline: none;
+    font-family: Inter;
+
+}
+
+
+.password-button {
+    background-color: white;
+    border: none;
+    color: #585858;
+    border-radius: 22px;
+    padding: 8px 67px;
+    cursor: pointer;
+    text-align: left;
+    padding-left: 2em;
+    width: 273px;
+    height: 34px;
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 21px */
+    letter-spacing: -0.266px;
+    position: relative;
+    /* Necesario para los pseudoelementos */
+}
+
+
+.user-button input,
+.password-button input {
+    border: none;
+    /* Elimina el borde del input */
+    outline: none;
+    /* Elimina el borde al hacer clic en el input */
+    background-color: white;
+    color: #585858;
+    font-family: Inter;
+
+}
+
+
+
+/* Estilos adicionales para el botón (ajusta según sea necesario) */
+.form-button {
+    background-color: #FF9300;
+    border: none;
+    border-radius: 22px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 273px;
+    height: 34px;
+    flex-shrink: 0;
+    padding-bottom: 1.9rem;
+    font-size: 14px;
+    font-style: normal;
+    color: white;
+    font-weight: 500;
+    line-height: 150%;
+    /* 21px */
+    letter-spacing: -0.266px;
+}
+
+.link-forgot {
+    color: white;
+    transition: 0.5s;
+    text-decoration: none;
+    /* Quita el subrayado */
+}
+
+.link-forgot:hover {
+    color: rgb(255, 180, 119);
+}
+
+
+/*media query for mobiles*/
+
+@media (max-width: 768px) {
+    .form-container {}
+}
+
+@media (max-width: 575px) {
+
+    /* Tus estilos para móviles aquí */
+    .form-container {}
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+    /* Tus estilos para tablets pequeñas aquí */
+    .form-container {}
+}
+
+
+/* Móviles (por ejemplo, smartphones y algunos pequeños tablets) */
+@media (max-width: 767px) {
+
+    /* Tus estilos para móviles aquí */
+    .form-container {}
+}
+
+/* Tablets pequeñas (por ejemplo, tablets en orientación vertical) */
+@media (min-width: 576px) and (max-width: 767px) {
+
+    /* Tus estilos para tablets pequeñas aquí */
+    .form-container {}
+}
+
+/* Tablets medianas (por ejemplo, tablets en orientación horizontal) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* Tus estilos para tablets medianas aquí */
+    .form-container {}
+}
+
+/* Tablets grandes (por ejemplo, iPad Pro) */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    /* Tus estilos para tablets grandes aquí */
+    .form-container {}
+}
+
+/* Pantallas pequeñas de escritorio (por ejemplo, laptops) A ESTE HAY QUE CAMBIARLO TODAVÍA */
+@media (min-width: 1200px) and (max-width: 1439px) {
+
+    /* Tus estilos para pantallas pequeñas de escritorio aquí */
+    .form-container {}
+}
+
+/* Pantallas medianas de escritorio (por ejemplo, monitores medianos) */
+@media (min-width: 1440px) and (max-width: 1679px) {
+    .form-container {}
+
+    /* Tus estilos para pantallas medianas de escritorio aquí */
+}
+
+/* Pantallas grandes de escritorio (por ejemplo, monitores grandes) */
+@media (min-width: 1680px) {
+    .form-container {}
+
+    /* Tus estilos para pantallas grandes de escritorio aquí */
+}
+
+
+
+/*add me all the media query for mobiles that may be needed*/

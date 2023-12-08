@@ -1,0 +1,52 @@
+.carga__container {
+  height: 100vh;
+  background-color: #0d2851;
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.spinner {
+  border: 10px solid #f39d12bb;
+  border-top: 8px solid transparent;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .spinner {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+
+@media screen and (max-width: 660px) {
+  .spinner {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+
+@media screen and (max-width: 330px) {
+  .spinner {
+    width: 4rem;
+    height: 4rem;
+  }
+}
