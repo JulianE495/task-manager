@@ -22,8 +22,24 @@ class DatabaseSeeder extends Seeder
             'email' => 'julian@test.com',
             'password' => bcrypt('12345678'),
             'image_path' => 'imagenes_perfil/1701265255.png',
+        ]);    
+
+        // Task::factory(30)->create();
+
+        \App\Models\Task::factory()->create([
+            'title' => 'Tarea 1',
+            'description' => 'Esta es la tarea 1',
+            'due_date' => '2021-12-08',
+            'state' => 'pendiente',
+            'user_id' => '1',
         ]);
 
-        
+        \App\Models\Task::factory()->create([
+            'title' => 'Tarea 2',
+            'description' => 'Esta es la tarea 2',
+            'due_date' => '2021-12-08',
+            'state' => 'pendiente',
+            'user_id' => '1',
+        ]);
     }
 }

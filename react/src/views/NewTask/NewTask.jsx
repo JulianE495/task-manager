@@ -6,25 +6,20 @@ import './NewTask.css';
 const NewTaskPage = ({ onClose, onCancel }) => {
     const titleRef = React.createRef();
     const descriptionRef = React.createRef();
-    const passwordRef = React.createRef();
     const dueDateRef = React.createRef();
     const stateRef = React.createRef();
-    const userIdRef = React.createRef();
     const { user, token, setUser, setToken, notification } = useStateContext();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const userIdRef = user.id;
-        const payload = {
-            title: titleRef.current?.value,
-            description: descriptionRef.current?.value,
-            dueDate: dueDateRef.current?.value,
-            state: stateRef.current?.value,
-            userId: userIdRef.current?.value,
-        };
-        debugger
-        axiosClient.post('/add-task', payload, {
+        const title = titleRef.current.value
+        const description = descriptionRef.current.value
+        const dueDate = dueDateRef.current.value
+        const state = stateRef.current.value
+        const userId = user.id
+
+        axiosClient.post('/tasks', { title: title, description: description, due_date: dueDate, state: state, user_id: userId }, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -44,7 +39,7 @@ const NewTaskPage = ({ onClose, onCancel }) => {
             <div className="login__container popup-container">
                 <div className="login__container__body">
                     <div className="login__container__body__title">
-                        <h1>Añadir tarea {user.id}</h1>
+                        <h1>Añadir tarea</h1>
                     </div>
                     <div className="login__container__body__form">
                         <form onSubmit={handleSubmit}>

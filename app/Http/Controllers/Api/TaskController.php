@@ -4,29 +4,50 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Task;
 class TaskController extends Controller
 {
+
+    public function index()
+    {
+        $task = Task::all();
+        return $task;
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-        'title' => 'required|string',
-        'description' => 'required|string',
-    ]);
+        $task = new task();
+        $task -> title = $request -> title;
+        $task -> description = $request -> description;
+        $task -> due_date = $request -> due_date;
+        $task -> state = $request -> state;
+        $task -> user_id = $request -> user_id;
+        $task -> save();
+    }
 
-    // Crear una nueva instancia de la tarea
-    $task = new Task();
-    $task->title = $request->input('title');
-    $task->description = $request->input('description');
-    $task->due_date = $request->input('due_date');
-    $task->state = $request->input('state');
-    $task->user_id = $request->user()->id;
-    // Puedes añadir más propiedades según tus necesidades
+    public function show($id)
+    {       
+        $task = Task::find($id);
+        return $task;
+    }
 
-    // Guardar la tarea en la base de datos
-    $task->save();
+    
+    public function update(Request $request, $id)
+    {
+        $task = Task::findOrFail($request->$id);
+        $request -> title = $task -> title;
+        $request -> description = $task -> description;
+        $request -> due_date = $task -> due_date;
+        $request -> state = $task -> state;
+        $request -> user_id = $task -> user_id;
+        $task -> save();
+        return $task;
+    }
 
-    // Devolver una respuesta adecuada
-    return response()->json(['message' => 'Tarea añadida correctamente'], 201);
+
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($request->$id);
+        $task -> delete();
     }
 }

@@ -10,7 +10,6 @@ import ProgesoDia from '../../Components/ProgresoXDia';
 import TodoFilter from '../../Components/todoFilter';
 import Calendar from '../../Components/calendar';
 import './Dashboard.css';
-
 const Dashboard = () => {
   const { user, token, setUser, setToken, notification } = useStateContext();
   const [loading, setLoading] = useState(true); // Estado para controlar la carga
