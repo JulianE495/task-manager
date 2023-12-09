@@ -30,8 +30,6 @@ const NewTaskPage = ({ onClose, onCancel }) => {
                     setErrors(response.data.errors);
                 }
             });
-
-        console.log('Datos del formulario:', payload);
     };
 
     return (

@@ -5,15 +5,18 @@ import { useStateContext } from '../../context/ContextProvider';
 import Carga from '../Carga/Carga'; // Asegúrate de importar el componente Carga
 import LeftSideMenu from '../../components/LeftSideMenu';
 import BienvenidaDashboard from '../../components/BienvenidaDashboard'
-import ResumenTareas from '../../Components/tareasPendientes';
+import ResumenTareas from '../../components/tareasPendientes';
 import ProgesoDia from '../../Components/ProgresoXDia';
 import TodoFilter from '../../Components/todoFilter';
 import Calendar from '../../Components/calendar';
 import './Dashboard.css';
+import axiosClient from '../../axios-client';
 const Dashboard = () => {
   const { user, token, setUser, setToken, notification } = useStateContext();
   const [loading, setLoading] = useState(true); // Estado para controlar la carga
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [tasks, setTasks] = useState([]);
+  const [pendingTasksCount, setPendingTasksCount] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -41,6 +44,23 @@ const Dashboard = () => {
   }, []); // La carga se realiza solo una vez al montar el componente
   const fullImagePath = user.image_path ? `http://localhost:8000/${user.image_path}` : null;
 
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axiosClient.get(`/tasks/${user.id}`);
+        const fetchedTasks = response.data.tasks;
+        setTasks(fetchedTasks);
+        // Contar solo las tareas pendientes
+        const pendingCount = fetchedTasks.filter(task => !task.completed).length;
+        setPendingTasksCount(pendingCount);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    };
+
+    fetchTasks();
+  }, [user.id]);
+
   return (
     <div className="dashboard__container">
       {loading ? ( // Muestra la pantalla de carga si la carga está en progreso
@@ -58,7 +78,7 @@ const Dashboard = () => {
                 pic={fullImagePath}
                 nombre={user.name}
                 apellido={user.last_name}
-                dias='5'
+                dias={pendingTasksCount}
                 porcentaje='70' />
               <div className='resume-container'>
                 <ResumenTareas />

@@ -25,7 +25,7 @@ const ResumenTareas = () => {
             <div className='resumen-tareas-container'>
                 <h2>Resumen de tareas</h2>
                 {tasks.map(t => (
-                    <TareaPendiente key={t.id} title={t.title} />
+                    <TareaPendiente key={t.id} titulo={t.title} fecha={t.due_date} />
                 ))}
             </div>
         </>
