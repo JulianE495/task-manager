@@ -2,60 +2,31 @@ import './css/tareasPendientes.css'
 import { TareaPendiente, ReunionPendiente } from '../components/Tarea'
 import { useEffect, useState } from "react";
 import axiosClient from "../axios-client.js";
+import { useStateContext } from "../context/ContextProvider.jsx";
 
 const ResumenTareas = () => {
     const [tasks, setTasks] = useState([]);
+    const { user } = useStateContext();
+
     useEffect(() => {
-        getTasks();
-        console.log('desde tasks: ', tasks)
-    }, [])
+        const fetchTasks = async () => {
+            try {
+                const response = await axiosClient.get(`/tasks/${user.id}`);
+                setTasks(response.data.tasks);
+            } catch (error) {
+                console.error('Error fetching tasks:', error);
+            }
+        };
 
-    const getTasks = async () => {
-        const response = await axiosClient.get('/tasks')
-        console.log('desde respobse: ', response)
-        setTasks(response)
-    }
-
-
-
+        fetchTasks();
+    }, [user.id]);
     return (
         <>
             <div className='resumen-tareas-container'>
                 <h2>Resumen de tareas</h2>
-                {/* {tasks.map(task => (
-                    <div>
-                        <TareaPendiente key={task.id}
-                            titulo={task.title}
-                            fecha={task.date}
-                            hora={task.time}
-                        />
-                    </div>
-                ))} */}
-                <ReunionPendiente
-                    titulo='Añadir funciones a la pantalla registro'
-                    fecha='Oct. 10, 2023'
-                    hora=' 4:00 pm - 5:00 pm'
-                />
-                <TareaPendiente
-                    titulo='Reunion con el equipo de desarrollo'
-                    fecha='Oct. 10, 2023'
-                    hora='4:00 pm - 5:00 pm' />
-                <TareaPendiente
-                    titulo='Reunion con el equipo de desarrollo'
-                    fecha='Oct. 10, 2023'
-                    hora='4:00 pm - 5:00 pm' />
-                <TareaPendiente
-                    titulo='Reunion con el equipo de desarrollo'
-                    fecha='Oct. 10, 2023'
-                    hora='4:00 pm - 5:00 pm' />
-                <TareaPendiente
-                    titulo='Reunion con el equipo de desarrollo'
-                    fecha='Oct. 10, 2023'
-                    hora='4:00 pm - 5:00 pm' />
-                <TareaPendiente
-                    titulo='Reunion con el equipo de desarrollo'
-                    fecha='Oct. 10, 2023'
-                    hora='4:00 pm - 5:00 pm' />
+                {tasks.map(t => (
+                    <TareaPendiente key={t.id} title={t.title} />
+                ))}
             </div>
         </>
     )

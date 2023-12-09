@@ -22,7 +22,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::controller(TaskController::class)->group(function () {
    Route::get('/tasks', 'index');
     Route::post('/tasks', 'store');
-    Route::get('/tasks/{id}', 'show');
+    Route::get('/tasks/{user_id}', 'show');
     Route::put('/tasks/{id}', 'update');
     Route::delete('/tasks/{id}', 'destroy');
 });

@@ -25,10 +25,10 @@ class TaskController extends Controller
         $task -> save();
     }
 
-    public function show($id)
+    public function show($user_id)
     {       
-        $task = Task::find($id);
-        return $task;
+        $tasks = Task::where('user_id', $user_id)->get();
+        return response()->json(['tasks' => $tasks]);
     }
 
     
