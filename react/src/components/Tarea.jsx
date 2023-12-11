@@ -1,6 +1,7 @@
 import { MdOutlineDelete } from "react-icons/md";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 import './css/Tarea.css';
@@ -13,6 +14,7 @@ export const TareaPendiente = ({ titulo, fecha, hora, label, task_id }) => {
     const handleCompleteClick = async () => {
         try {
             await axiosClient.put(`/tasks/${task_id}`, { state: "Completada" });
+            toast.success('Tarea completada');
             window.location.reload();
         } catch (error) {
             console.error('Error completing task:', error);
@@ -22,7 +24,8 @@ export const TareaPendiente = ({ titulo, fecha, hora, label, task_id }) => {
 
     const handleDelete = async () => {
         try {
-            await axiosClient.delete(`/tasks/${task_id}`,);
+            await axiosClient.delete(`/tasks/${task_id}`);
+            toast.success('Tarea eliminada');
             window.location.reload();
         } catch (error) {
             console.error('Error deleting task:', error);
@@ -71,13 +74,23 @@ export const TareaLista = ({ titulo, fecha, hora, label, task_id }) => {
     const handleTodoClick = async () => {
         try {
             await axiosClient.put(`/tasks/${task_id}`, { state: "Pendiente" });
+            toast.success('Tarea pendiente');
             window.location.reload();
         } catch (error) {
             console.error('Error completing task:', error);
         }
         console.log(task_id)
     };
-
+    const handleDelete = async () => {
+        try {
+            await axiosClient.delete(`/tasks/${task_id}`);
+            toast.success('Tarea eliminada');
+            window.location.reload();
+        } catch (error) {
+            console.error('Error deleting task:', error);
+        }
+        console.log(task_id)
+    };
     return (
         <div className='task-container'>
             <div className='info-container complete'>
@@ -91,7 +104,7 @@ export const TareaLista = ({ titulo, fecha, hora, label, task_id }) => {
                 <button onClick={handleTodoClick}>
                     <MdCancel className="control__ico" />
                 </button>
-                <button>
+                <button onClick={handleDelete}>
                     <MdOutlineDelete className="control__ico" />
                 </button>
             </div>

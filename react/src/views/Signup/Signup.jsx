@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axiosClient from "../../axios-client.js";
 import { useStateContext } from "../../context/ContextProvider.jsx";
 import "./SignupStyles.css";
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Signup() {
   const nameRef = React.createRef();
@@ -41,6 +41,7 @@ export default function Signup() {
       .then(({ data }) => {
         setUser(data.user);
         setToken(data.token);
+        toast.success('Registro exitoso');
       })
       .catch((err) => {
         const response = err.response;
@@ -61,10 +62,8 @@ export default function Signup() {
             </div>
             <div className="login__container__body__form">
               <form onSubmit={onSubmit}>
-                <div className="form-element">
-                  <label className="user-button">
-                    <input ref={imageRef} type="file" accept="image/*" />
-                  </label>
+                <div className="login__container__body__form__input">
+                  <input className="input" ref={imageRef} type="file" accept="image/*" />
                 </div>
 
                 <div className="login__container__body__form__input">

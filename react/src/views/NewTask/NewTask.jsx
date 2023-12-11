@@ -84,13 +84,15 @@ const NewTaskPage = ({ onClose, onCancel }) => {
                                 </div>
 
                                 <div className="login__container__body__form__input">
-                                    <input
-                                        type="text"
+                                    <select
                                         ref={stateRef}
                                         name="taskState"
                                         className="input"
-                                        placeholder="Estado de la tarea"
-                                    />
+                                    >
+                                        <option value="" disabled selected>Selecciona un estado</option>
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Completada">Completada</option>
+                                    </select>
                                 </div>
 
                                 <div className="login__container__body__form__input">

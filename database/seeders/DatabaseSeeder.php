@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Tarea 1',
             'description' => 'Esta es la tarea 1',
             'due_date' => '2021-12-08',
-            'state' => 'pendiente',
+            'state' => 'Pendiente',
             'user_id' => '1',
         ]);
 
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Tarea 2',
             'description' => 'Esta es la tarea 2',
             'due_date' => '2021-12-08',
-            'state' => 'pendiente',
+            'state' => 'Pendiente',
             'user_id' => '1',
         ]);
     }

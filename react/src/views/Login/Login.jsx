@@ -63,7 +63,7 @@ export default function Login() {
               <form onSubmit={handleSubmit}>
                 <div className="login__container__body__form__input">
                   <input
-                    type="text"
+                    type="email"
                     name="email"
                     className="input"
                     placeholder="Correo electrónico"
@@ -85,9 +85,6 @@ export default function Login() {
                 </div>
                 <div className="login__container__body__form__input">
                   <button type="submit">Iniciar sesión</button>
-                </div>
-                <div className="login__container__body__form__input">
-                  <a href="#">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div className="login__container__body__register">
                   <p>
