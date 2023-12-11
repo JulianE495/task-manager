@@ -22,11 +22,12 @@ export function ButtonOptionSelected2({ label, link, icon }) {
   )
 }
 
-export function ButtonLogout({ label, link }) {
+export function ButtonLogout({ label, onClick, icon }) {
   return (
-    <a className="button logout" href={link}>
-      <span className="label logout__label">{label}</span>
-    </a>
+    <button className="button" onClick={onClick}>
+      <span>{icon}</span>
+      <b className="label logout__label">{label}</b>
+    </button>
   )
 }
 

@@ -12,7 +12,9 @@ const ResumenTareas = () => {
         const fetchTasks = async () => {
             try {
                 const response = await axiosClient.get(`/tasks/${user.id}`);
-                setTasks(response.data.tasks);
+                // Filtra las tareas con el estado "Pendiente"
+                const pendingTasks = response.data.tasks.filter(task => task.state === 'Pendiente');
+                setTasks(pendingTasks);
             } catch (error) {
                 console.error('Error fetching tasks:', error);
             }
@@ -20,12 +22,13 @@ const ResumenTareas = () => {
 
         fetchTasks();
     }, [user.id]);
+
     return (
         <>
             <div className='resumen-tareas-container'>
                 <h2>Resumen de tareas</h2>
                 {tasks.map(t => (
-                    <TareaPendiente key={t.id} titulo={t.title} fecha={t.due_date} />
+                    <TareaPendiente task_id={t.id} key={t.id} titulo={t.title} fecha={t.due_date} />
                 ))}
             </div>
         </>

@@ -3,9 +3,10 @@ import { ButtonOptionSelected, ButtonOptionSelected2, ButtonLogout } from './But
 import { IoAddCircle } from "react-icons/io5";
 import { BiSolidDashboard } from "react-icons/bi";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { FaUser } from "react-icons/fa";
 import axiosClient from "../axios-client.js";
 import { useStateContext } from "../context/ContextProvider";
-import toast, { Toaster } from 'react-hot-toast';
+
 
 import './css/leftSideMenu.css';
 import logo from './images/Logo.png'
@@ -24,7 +25,7 @@ const LeftSideMenu = () => {
     const handleSavePopup = async () => {
         await new Promise(resolve => setTimeout(resolve, 5000));
         setShowPopup(false);
-        toast.success('Tarea creada exitosamente');
+
     };
 
     const handleCancelPopup = () => {
@@ -44,11 +45,12 @@ const LeftSideMenu = () => {
             .finally(() => {
                 setLogoutLoading(false); // Desactivar la pantalla de carga al finalizar el logout
             });
+        console.log('Logout');
     }
 
     return (
         <>
-            <Toaster />
+
             <div className='menu-container'>
                 <div className='menu-content'>
                     <div className='logo-container'>
@@ -57,7 +59,6 @@ const LeftSideMenu = () => {
                     </div>
 
                     <div className='menu-options'>
-                        {/* Usa la función handleCreateTaskClick al hacer clic en el botón */}
                         <ButtonOptionSelected
                             icon={<IoAddCircle className='svg-icon' style={{ color: 'red' }} />}
                             label='Añadir tarea'
@@ -67,16 +68,17 @@ const LeftSideMenu = () => {
                             label='Dashboard'
                             link='/dashboard'></ButtonOptionSelected2>
                         <ButtonOptionSelected2
-                            icon={<BiSolidDashboard className='svg-icon' style={{ color: 'red' }}></BiSolidDashboard>}
-                            label='Lista de tareas' ></ButtonOptionSelected2>
+                            icon={<FaUser className='svg-icon' style={{ color: 'red' }}></FaUser>}
+                            label='Perfil' link='/profile'></ButtonOptionSelected2>
+                        <ButtonOptionSelected
+                            onClick={onLogout}
+                            icon={<RiLogoutCircleLine
+                                className='svg-icon'
+                                style={{ color: 'red' }}></RiLogoutCircleLine>}
+                            label='Cerrar sesion' ></ButtonOptionSelected>
                     </div>
                 </div>
-                <ButtonOptionSelected
-                    onClick={onLogout}
-                    icon={<RiLogoutCircleLine className='svg-icon' style={{ color: 'red' }}></RiLogoutCircleLine>}
-                    label='Cerrar sesion' ></ButtonOptionSelected>
 
-                {/* Muestra el popup si showPopup es true */}
                 {showPopup && <NewTaskPage onClose={handleSavePopup} onCancel={handleCancelPopup} className="active" />}
             </div>
         </>

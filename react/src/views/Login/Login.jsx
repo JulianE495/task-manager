@@ -34,7 +34,6 @@ export default function Login() {
       toast.error('Debe ingresar una contraseña');
     }
     else {
-      console.log('Datos del formulario:', formData);
       toast.success('Inicio de sesion exitoso');
       axiosClient.post('/login', formData)
         .then(({ data }) => {

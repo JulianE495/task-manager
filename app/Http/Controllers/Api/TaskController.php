@@ -34,20 +34,34 @@ class TaskController extends Controller
     
     public function update(Request $request, $id)
     {
-        $task = Task::findOrFail($request->$id);
-        $request -> title = $task -> title;
-        $request -> description = $task -> description;
-        $request -> due_date = $task -> due_date;
-        $request -> state = $task -> state;
-        $request -> user_id = $task -> user_id;
-        $task -> save();
+        $task = Task::findOrFail($id);
+
+        // Verificar qué campos se han enviado y actualizar solo esos campos
+        if ($request->has('title')) {
+            $task->title = $request->input('title');
+        }
+
+        if ($request->has('description')) {
+            $task->description = $request->input('description');
+        }
+
+        if ($request->has('due_date')) {
+            $task->due_date = $request->input('due_date');
+        }
+
+        if ($request->has('state')) {
+            $task->state = $request->input('state');
+        }
+
+        $task->save();
+
         return $task;
     }
 
 
     public function destroy($id)
     {
-        $task = Task::findOrFail($request->$id);
+        $task = Task::findOrFail($id);
         $task -> delete();
     }
 }

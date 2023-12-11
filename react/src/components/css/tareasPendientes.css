@@ -25,7 +25,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .resumen-tareas-container {
-        width: 50%;
+        width: auto;
         padding: 1em;
     }
 }
@@ -34,5 +34,9 @@
     .resumen-tareas-container {
         width: 100%;
         padding: 1em;
+    }
+
+    .resumen-tareas-container>h2 {
+        font-size: 1.5em;
     }
 }

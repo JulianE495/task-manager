@@ -1,26 +1,51 @@
+import { MdOutlineDelete } from "react-icons/md";
+import { FaRegCheckCircle } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
 
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+
 import './css/Tarea.css';
 // import { BiSolidDashboard } from "react-icons/bi";
 
 import user01 from './images/user-photo-01.png'
+import axiosClient from "../axios-client";
 
-export const TareaPendiente = ({ titulo, fecha, hora, label }) => {
+export const TareaPendiente = ({ titulo, fecha, hora, label, task_id }) => {
+    const handleCompleteClick = async () => {
+        try {
+            await axiosClient.put(`/tasks/${task_id}`, { state: "Completada" });
+            window.location.reload();
+        } catch (error) {
+            console.error('Error completing task:', error);
+        }
+        console.log(task_id)
+    };
+
+    const handleDelete = async () => {
+        try {
+            await axiosClient.delete(`/tasks/${task_id}`,);
+            window.location.reload();
+        } catch (error) {
+            console.error('Error deleting task:', error);
+        }
+        console.log(task_id)
+    };
+
     return (
         <div className='task-container'>
-            <FormGroup>
-                <FormControlLabel control={<Checkbox />} label="" />
-            </FormGroup>
             <div className='info-container'>
                 <h3>{titulo}</h3>
                 <div className='date-container'>
                     <span>{fecha} |</span>
                     <span>{hora}</span>
                 </div>
+            </div>
+            <div className="controls__container">
+                <button onClick={handleCompleteClick}>
+                    <FaRegCheckCircle className="control__ico" />
+                </button>
+                <button onClick={handleDelete}>
+                    <MdOutlineDelete className="control__ico" />
+                </button>
             </div>
         </div>
     )
@@ -36,6 +61,39 @@ export const ReunionPendiente = ({ titulo, fecha, hora, label }) => {
                     <span>{fecha} | </span>
                     <span>{hora}</span>
                 </div>
+            </div>
+        </div>
+    )
+}
+
+
+export const TareaLista = ({ titulo, fecha, hora, label, task_id }) => {
+    const handleTodoClick = async () => {
+        try {
+            await axiosClient.put(`/tasks/${task_id}`, { state: "Pendiente" });
+            window.location.reload();
+        } catch (error) {
+            console.error('Error completing task:', error);
+        }
+        console.log(task_id)
+    };
+
+    return (
+        <div className='task-container'>
+            <div className='info-container complete'>
+                <h3>{titulo}</h3>
+                <div className='date-container'>
+                    <span>{fecha} |</span>
+                    <span>{hora}</span>
+                </div>
+            </div>
+            <div className="controls__container">
+                <button onClick={handleTodoClick}>
+                    <MdCancel className="control__ico" />
+                </button>
+                <button>
+                    <MdOutlineDelete className="control__ico" />
+                </button>
             </div>
         </div>
     )

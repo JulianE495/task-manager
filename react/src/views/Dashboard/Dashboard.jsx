@@ -82,8 +82,8 @@ const Dashboard = () => {
                 porcentaje='70' />
               <div className='resume-container'>
                 <ResumenTareas />
-                <ProgesoDia progText='Progreso en el dia' />
-                <ProgesoDia progText='Progreso en la semana' />
+                {/* <ProgesoDia progText='Progreso en el dia' />
+                <ProgesoDia progText='Progreso en la semana' /> */}
                 <Calendar />
               </div>
               <div className="todoFilter">

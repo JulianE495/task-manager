@@ -55,8 +55,14 @@
 /* Estilos para pantallas medianas (de 768px a 1023px) */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .details-content {
-        padding: .8em;
-        gap: .2em;
+        padding: 4em;
+        gap: 2.5em;
+    }
+
+    .details-content>img {
+        width: 12vh;
+        height: 12vh;
+        object-fit: cover;
     }
 
     .user-info-container {
@@ -90,12 +96,14 @@
     .details-content {
         width: 100%;
         height: auto;
-        padding: .8em;
-        gap: .2em;
+        padding: 1em;
+        gap: 1em;
     }
 
     .details-content>img {
-        width: 30%;
+        width: 6vh;
+        height: 6vh;
+        object-fit: cover;
     }
 
     .user-info-container {
