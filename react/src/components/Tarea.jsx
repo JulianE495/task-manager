@@ -15,6 +15,7 @@ export const TareaPendiente = ({ titulo, fecha, hora, label, task_id }) => {
         try {
             await axiosClient.put(`/tasks/${task_id}`, { state: "Completada" });
             toast.success('Tarea completada');
+            await new Promise(resolve => setTimeout(resolve, 2000));
             window.location.reload();
         } catch (error) {
             console.error('Error completing task:', error);
@@ -26,6 +27,7 @@ export const TareaPendiente = ({ titulo, fecha, hora, label, task_id }) => {
         try {
             await axiosClient.delete(`/tasks/${task_id}`);
             toast.success('Tarea eliminada');
+            await new Promise(resolve => setTimeout(resolve, 2000));
             window.location.reload();
         } catch (error) {
             console.error('Error deleting task:', error);
@@ -35,6 +37,7 @@ export const TareaPendiente = ({ titulo, fecha, hora, label, task_id }) => {
 
     return (
         <div className='task-container'>
+            <Toaster />
             <div className='info-container'>
                 <h3>{titulo}</h3>
                 <div className='date-container'>
@@ -75,6 +78,7 @@ export const TareaLista = ({ titulo, fecha, hora, label, task_id }) => {
         try {
             await axiosClient.put(`/tasks/${task_id}`, { state: "Pendiente" });
             toast.success('Tarea pendiente');
+            await new Promise(resolve => setTimeout(resolve, 2000));
             window.location.reload();
         } catch (error) {
             console.error('Error completing task:', error);
@@ -85,6 +89,7 @@ export const TareaLista = ({ titulo, fecha, hora, label, task_id }) => {
         try {
             await axiosClient.delete(`/tasks/${task_id}`);
             toast.success('Tarea eliminada');
+            await new Promise(resolve => setTimeout(resolve, 2000));
             window.location.reload();
         } catch (error) {
             console.error('Error deleting task:', error);
@@ -93,6 +98,7 @@ export const TareaLista = ({ titulo, fecha, hora, label, task_id }) => {
     };
     return (
         <div className='task-container'>
+            <Toaster />
             <div className='info-container complete'>
                 <h3>{titulo}</h3>
                 <div className='date-container'>

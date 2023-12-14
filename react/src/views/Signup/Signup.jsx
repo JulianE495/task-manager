@@ -3,6 +3,7 @@ import axiosClient from "../../axios-client.js";
 import { useStateContext } from "../../context/ContextProvider.jsx";
 import "./SignupStyles.css";
 import toast, { Toaster } from 'react-hot-toast';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 export default function Signup() {
   const nameRef = React.createRef();
@@ -13,8 +14,17 @@ export default function Signup() {
   const imageRef = React.createRef();
   const { setUser, setToken } = useStateContext();
   const [errors, setErrors] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
+  const handleChange = (e) => { };
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+    const passwordInput = passwordRef.current;
 
+    if (passwordInput) {
+      passwordInput.type = showPassword ? 'password' : 'text';
+    }
+  };
   const onSubmit = (ev) => {
     ev.preventDefault();
 
@@ -58,7 +68,7 @@ export default function Signup() {
         <div className="login__container">
           <div className="login__container__body">
             <div className="login__container__body__title">
-              <h1>Registro</h1>
+              <h1 className='signup__title'>Registro</h1>
             </div>
             <div className="login__container__body__form">
               <form onSubmit={onSubmit}>
@@ -99,22 +109,38 @@ export default function Signup() {
 
                 <div className="login__container__body__form__input">
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     className="input"
                     placeholder="Contraseña"
+                    // value={formData.password}
                     ref={passwordRef}
+                    onChange={handleChange}
                   />
+                  <span
+                    className="hide__button"
+                    onClick={handleTogglePassword}
+                  >
+                    {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                  </span>
                 </div>
 
                 <div className="login__container__body__form__input">
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     className="input"
                     placeholder="Contraseña"
+                    // value={formData.password}
                     ref={passwordConfirmationRef}
+                    onChange={handleChange}
                   />
+                  <span
+                    className="hide__button"
+                    onClick={handleTogglePassword}
+                  >
+                    {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                  </span>
                 </div>
 
                 <div className="login__container__body__form__input">
@@ -129,6 +155,12 @@ export default function Signup() {
             </div>
           </div>
         </div>
+        <section>
+          <div class='air air1'></div>
+          <div class='air air2'></div>
+          <div class='air air3'></div>
+          <div class='air air4'></div>
+        </section>
       </div>
     </>
   );

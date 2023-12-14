@@ -51,8 +51,8 @@ const Dashboard = () => {
         const fetchedTasks = response.data.tasks;
         setTasks(fetchedTasks);
         // Contar solo las tareas pendientes
-        const pendingCount = fetchedTasks.filter(task => !task.completed).length;
-        setPendingTasksCount(pendingCount);
+        const pendingTasks = fetchedTasks.filter(task => task.state === "Pendiente").length;
+        setPendingTasksCount(pendingTasks);
       } catch (error) {
         console.error('Error fetching tasks:', error);
       }

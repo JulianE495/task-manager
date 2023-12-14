@@ -4,10 +4,14 @@ import { useStateContext } from "../../context/ContextProvider.jsx";
 import { useState } from "react";
 import './LoginStyles.css';
 import toast, { Toaster } from 'react-hot-toast';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+
 
 export default function Login() {
   const emailRef = createRef()
   const passwordRef = createRef()
+  const [showPassword, setShowPassword] = useState(false);
+
   const { setUser, setToken } = useStateContext()
   const [errors, setErrors] = useState(null);
   const [formData, setFormData] = useState({
@@ -20,6 +24,15 @@ export default function Login() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+    const passwordInput = passwordRef.current;
+
+    if (passwordInput) {
+      passwordInput.type = showPassword ? 'password' : 'text';
+    }
   };
 
   const handleSubmit = (e) => {
@@ -53,11 +66,12 @@ export default function Login() {
   return (
     <>
       <Toaster />
+
       <div className="login">
         <div className="login__container">
           <div className="login__container__body">
             <div className="login__container__body__title">
-              <h1>Inicio de Sesión</h1>
+              <h1 className="login__title">Inicio de Sesión</h1>
             </div>
             <div className="login__container__body__form">
               <form onSubmit={handleSubmit}>
@@ -74,7 +88,7 @@ export default function Login() {
                 </div>
                 <div className="login__container__body__form__input">
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     className="input"
                     placeholder="Contraseña"
@@ -82,6 +96,12 @@ export default function Login() {
                     ref={passwordRef}
                     onChange={handleChange}
                   />
+                  <span
+                    className="hide__button"
+                    onClick={handleTogglePassword}
+                  >
+                    {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                  </span>
                 </div>
                 <div className="login__container__body__form__input">
                   <button type="submit">Iniciar sesión</button>
@@ -95,7 +115,14 @@ export default function Login() {
             </div>
           </div>
         </div>
+        <section>
+          <div class='air air1'></div>
+          <div class='air air2'></div>
+          <div class='air air3'></div>
+          <div class='air air4'></div>
+        </section>
       </div>
+
     </>
   );
 }

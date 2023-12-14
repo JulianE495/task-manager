@@ -113,75 +113,7 @@
     color: rgb(255, 180, 119);
 }
 
-
-/*media query for mobiles*/
-
-@media (max-width: 768px) {
-    .form-container {}
+.signup__title {
+    color: #ffffff;
+    font-weight: 100;
 }
-
-@media (max-width: 575px) {
-
-    /* Tus estilos para móviles aquí */
-    .form-container {}
-}
-
-@media (min-width: 576px) and (max-width: 767px) {
-
-    /* Tus estilos para tablets pequeñas aquí */
-    .form-container {}
-}
-
-
-/* Móviles (por ejemplo, smartphones y algunos pequeños tablets) */
-@media (max-width: 767px) {
-
-    /* Tus estilos para móviles aquí */
-    .form-container {}
-}
-
-/* Tablets pequeñas (por ejemplo, tablets en orientación vertical) */
-@media (min-width: 576px) and (max-width: 767px) {
-
-    /* Tus estilos para tablets pequeñas aquí */
-    .form-container {}
-}
-
-/* Tablets medianas (por ejemplo, tablets en orientación horizontal) */
-@media (min-width: 768px) and (max-width: 991px) {
-
-    /* Tus estilos para tablets medianas aquí */
-    .form-container {}
-}
-
-/* Tablets grandes (por ejemplo, iPad Pro) */
-@media (min-width: 992px) and (max-width: 1199px) {
-
-    /* Tus estilos para tablets grandes aquí */
-    .form-container {}
-}
-
-/* Pantallas pequeñas de escritorio (por ejemplo, laptops) A ESTE HAY QUE CAMBIARLO TODAVÍA */
-@media (min-width: 1200px) and (max-width: 1439px) {
-
-    /* Tus estilos para pantallas pequeñas de escritorio aquí */
-    .form-container {}
-}
-
-/* Pantallas medianas de escritorio (por ejemplo, monitores medianos) */
-@media (min-width: 1440px) and (max-width: 1679px) {
-    .form-container {}
-
-    /* Tus estilos para pantallas medianas de escritorio aquí */
-}
-
-/* Pantallas grandes de escritorio (por ejemplo, monitores grandes) */
-@media (min-width: 1680px) {
-    .form-container {}
-
-    /* Tus estilos para pantallas grandes de escritorio aquí */
-}
-
-
-
-/*add me all the media query for mobiles that may be needed*/
